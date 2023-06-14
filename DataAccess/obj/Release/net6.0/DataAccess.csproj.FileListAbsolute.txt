@@ -1,0 +1,17 @@
+/Users/admin/Documents/PRN231/Assignment01Solution_HE153729/DataAccess/bin/Release/net6.0/DataAccess.deps.json
+/Users/admin/Documents/PRN231/Assignment01Solution_HE153729/DataAccess/bin/Release/net6.0/DataAccess.runtimeconfig.json
+/Users/admin/Documents/PRN231/Assignment01Solution_HE153729/DataAccess/bin/Release/net6.0/DataAccess.dll
+/Users/admin/Documents/PRN231/Assignment01Solution_HE153729/DataAccess/bin/Release/net6.0/DataAccess.pdb
+/Users/admin/Documents/PRN231/Assignment01Solution_HE153729/DataAccess/bin/Release/net6.0/BussinessObject.dll
+/Users/admin/Documents/PRN231/Assignment01Solution_HE153729/DataAccess/bin/Release/net6.0/BussinessObject.pdb
+/Users/admin/Documents/PRN231/Assignment01Solution_HE153729/DataAccess/obj/Release/net6.0/DataAccess.csproj.AssemblyReference.cache
+/Users/admin/Documents/PRN231/Assignment01Solution_HE153729/DataAccess/obj/Release/net6.0/DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+/Users/admin/Documents/PRN231/Assignment01Solution_HE153729/DataAccess/obj/Release/net6.0/DataAccess.AssemblyInfoInputs.cache
+/Users/admin/Documents/PRN231/Assignment01Solution_HE153729/DataAccess/obj/Release/net6.0/DataAccess.AssemblyInfo.cs
+/Users/admin/Documents/PRN231/Assignment01Solution_HE153729/DataAccess/obj/Release/net6.0/DataAccess.csproj.CoreCompileInputs.cache
+/Users/admin/Documents/PRN231/Assignment01Solution_HE153729/DataAccess/obj/Release/net6.0/DataAccess.csproj.CopyComplete
+/Users/admin/Documents/PRN231/Assignment01Solution_HE153729/DataAccess/obj/Release/net6.0/DataAccess.dll
+/Users/admin/Documents/PRN231/Assignment01Solution_HE153729/DataAccess/obj/Release/net6.0/refint/DataAccess.dll
+/Users/admin/Documents/PRN231/Assignment01Solution_HE153729/DataAccess/obj/Release/net6.0/DataAccess.pdb
+/Users/admin/Documents/PRN231/Assignment01Solution_HE153729/DataAccess/obj/Release/net6.0/DataAccess.genruntimeconfig.cache
+/Users/admin/Documents/PRN231/Assignment01Solution_HE153729/DataAccess/obj/Release/net6.0/ref/DataAccess.dll

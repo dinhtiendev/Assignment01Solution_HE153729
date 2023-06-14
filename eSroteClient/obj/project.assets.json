@@ -1,0 +1,93 @@
+{
+  "version": 3,
+  "targets": {
+    "net6.0": {
+      "BussinessObject/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/BussinessObject.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BussinessObject.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "BussinessObject/1.0.0": {
+      "type": "project",
+      "path": "../BussinessObject/BussinessObject.csproj",
+      "msbuildProject": "../BussinessObject/BussinessObject.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net6.0": [
+      "BussinessObject >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/Users/admin/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/Users/admin/Documents/PRN231/Assignment01Solution_HE153729/eSroteClient/eSroteClient.csproj",
+      "projectName": "eSroteClient",
+      "projectPath": "/Users/admin/Documents/PRN231/Assignment01Solution_HE153729/eSroteClient/eSroteClient.csproj",
+      "packagesPath": "/Users/admin/.nuget/packages/",
+      "outputPath": "/Users/admin/Documents/PRN231/Assignment01Solution_HE153729/eSroteClient/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/Users/admin/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net6.0"
+      ],
+      "sources": {
+        "/usr/local/share/dotnet/sdk/7.0.302/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "projectReferences": {
+            "/Users/admin/Documents/PRN231/Assignment01Solution_HE153729/BussinessObject/BussinessObject.csproj": {
+              "projectPath": "/Users/admin/Documents/PRN231/Assignment01Solution_HE153729/BussinessObject/BussinessObject.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net6.0": {
+        "targetAlias": "net6.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.AspNetCore.App": {
+            "privateAssets": "none"
+          },
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.302/RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
