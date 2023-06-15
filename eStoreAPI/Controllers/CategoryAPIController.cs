@@ -1,11 +1,13 @@
 ﻿using System;
 using BussinessObject;
 using DataAccess.Repositories.IRepositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eStoreAPI.Controllers
 {
     [Route("api/Categories")]
+    [Authorize]
     public class CategoryAPIController : ControllerBase
     {
         protected ResponseDto _response;

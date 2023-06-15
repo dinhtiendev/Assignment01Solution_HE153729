@@ -70,3 +70,6 @@
 /Users/admin/Documents/PRN231/Assignment01Solution_HE153729/eStoreAPI/obj/Debug/net6.0/eStoreAPI.pdb
 /Users/admin/Documents/PRN231/Assignment01Solution_HE153729/eStoreAPI/obj/Debug/net6.0/eStoreAPI.genruntimeconfig.cache
 /Users/admin/Documents/PRN231/Assignment01Solution_HE153729/eStoreAPI/obj/Debug/net6.0/ref/eStoreAPI.dll
+/Users/admin/Documents/PRN231/Assignment01Solution_HE153729/eStoreAPI/bin/Debug/net6.0/Microsoft.Extensions.Configuration.dll
+/Users/admin/Documents/PRN231/Assignment01Solution_HE153729/eStoreAPI/bin/Debug/net6.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/admin/Documents/PRN231/Assignment01Solution_HE153729/eStoreAPI/bin/Debug/net6.0/Microsoft.IdentityModel.Abstractions.dll

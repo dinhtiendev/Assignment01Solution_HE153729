@@ -1,9 +1,13 @@
 ﻿using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using AutoMapper;
 using BussinessObject;
 using DataAccess.DAOs;
 using DataAccess.Models;
 using DataAccess.Repositories.IRepositories;
+using Microsoft.IdentityModel.Tokens;
 
 namespace DataAccess.Repositories
 {
@@ -60,6 +64,16 @@ namespace DataAccess.Repositories
             {
                 return false;
             }
+        }
+
+        public async Task<MemberDto> GetMemberByEmailAndPassword(string email, string password)
+        {
+            var member = await _memberDAO.GetMemberByEmailAndPasswordAsync(email, password);
+            if (member != null)
+            {
+                return _mapper.Map<MemberDto>(member);
+            }
+            return null;
         }
     }
 }

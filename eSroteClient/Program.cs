@@ -1,8 +1,17 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using BussinessObject;
+using eSroteClient;
+using eSroteClient.Services;
+using eSroteClient.Services.IServices;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+SD.eStoreAPIBase = builder.Configuration["ServiceUrls:eStoreAPI"];
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddHttpClient<IProductService, ProductService>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddHttpClient<IMemberService, MemberService>();
+builder.Services.AddScoped<IMemberService, MemberService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

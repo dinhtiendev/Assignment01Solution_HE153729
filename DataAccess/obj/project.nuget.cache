@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "2dyxBkIda7uA3TEznsxOlljhg4FbUhIBIUUL8h1ZPX0QGF05YdBufesbhoA3RkF/ywL9Fr3kjwhrnmY+/Ewdqg==",
+  "dgSpecHash": "wrThgbY1nNcT9+M9ln0wtfHskIZ0/NSIzSWpMTVyN2I43irJ9+cQhxTVC5C/taMW2+yv4j90Rz40vzaKGW0lxg==",
   "success": true,
   "projectFilePath": "/Users/admin/Documents/PRN231/Assignment01Solution_HE153729/DataAccess/DataAccess.csproj",
   "expectedPackageFiles": [
@@ -18,6 +18,7 @@
     "/Users/admin/.nuget/packages/microsoft.entityframeworkcore.sqlserver/6.0.18/microsoft.entityframeworkcore.sqlserver.6.0.18.nupkg.sha512",
     "/Users/admin/.nuget/packages/microsoft.extensions.caching.abstractions/6.0.0/microsoft.extensions.caching.abstractions.6.0.0.nupkg.sha512",
     "/Users/admin/.nuget/packages/microsoft.extensions.caching.memory/6.0.1/microsoft.extensions.caching.memory.6.0.1.nupkg.sha512",
+    "/Users/admin/.nuget/packages/microsoft.extensions.configuration/6.0.1/microsoft.extensions.configuration.6.0.1.nupkg.sha512",
     "/Users/admin/.nuget/packages/microsoft.extensions.configuration.abstractions/6.0.0/microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
     "/Users/admin/.nuget/packages/microsoft.extensions.dependencyinjection/6.0.1/microsoft.extensions.dependencyinjection.6.0.1.nupkg.sha512",
     "/Users/admin/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/6.0.0/microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",

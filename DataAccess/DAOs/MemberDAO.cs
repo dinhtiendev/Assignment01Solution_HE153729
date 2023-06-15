@@ -42,6 +42,11 @@ namespace DataAccess.DAOs
             _dbContext.Members.Remove(member);
             await _dbContext.SaveChangesAsync();
         }
+
+        public async Task<Member> GetMemberByEmailAndPasswordAsync(string email, string password)
+        {
+            return await _dbContext.Members.FirstOrDefaultAsync(x => x.Email == email && x.Password == password);
+        }
     }
 }
 

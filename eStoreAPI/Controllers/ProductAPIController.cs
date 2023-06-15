@@ -1,11 +1,13 @@
 ﻿using System;
 using BussinessObject;
 using DataAccess.Repositories.IRepositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eStoreAPI.Controllers
 {
     [Route("api/Products")]
+    [Authorize]
     public class ProductAPIController : ControllerBase
     {
         protected ResponseDto _response;
@@ -84,6 +86,7 @@ namespace eStoreAPI.Controllers
 
         [HttpDelete]
         [Route("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<object> Delete(int id)
         {
             try

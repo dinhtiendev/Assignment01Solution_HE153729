@@ -9,6 +9,8 @@ namespace DataAccess.Repositories.IRepositories
 		Task<MemberDto> GetMemberById(int memberId);
 		Task<MemberDto> CreateUpdateMember(MemberDto memberDto);
 		Task<bool> DeleteMember(int memberId);
-	}
+		Task<MemberDto> GetMemberByEmailAndPassword(string email, string password);
+
+    }
 }
 
