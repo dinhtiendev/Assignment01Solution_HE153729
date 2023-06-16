@@ -13,55 +13,55 @@ namespace eSroteClient.Services
             _clientFactory = clientFactory;
         }
 
-        public async Task<T> CreateMemberAsync<T>(MemberDto memberDto)
+        public async Task<T> CreateMemberAsync<T>(MemberDto memberDto, string token)
         {
             return await this.SendAsync<T>(new ApiRequest()
             {
                 ApiType = SD.ApiType.POST,
                 Data = memberDto,
                 Url = SD.eStoreAPIBase + "/api/Members",
-                AccessToken = ""
+                AccessToken = token
             });
         }
 
-        public async Task<T> DeleteMemberAsync<T>(int id)
+        public async Task<T> DeleteMemberAsync<T>(int id, string token)
         {
             return await this.SendAsync<T>(new ApiRequest()
             {
                 ApiType = SD.ApiType.DELETE,
                 Url = SD.eStoreAPIBase + "/api/Members/" + id,
-                AccessToken = ""
+                AccessToken = token
             });
         }
 
-        public async Task<T> GetAllMembersAsync<T>()
+        public async Task<T> GetAllMembersAsync<T>(string token)
         {
             return await this.SendAsync<T>(new ApiRequest()
             {
                 ApiType = SD.ApiType.GET,
                 Url = SD.eStoreAPIBase + "/api/Members",
-                AccessToken = ""
+                AccessToken = token
             });
         }
 
-        public async Task<T> GetMemberByIdAsync<T>(int id)
+        public async Task<T> GetMemberByIdAsync<T>(int id, string token)
         {
             return await this.SendAsync<T>(new ApiRequest()
             {
                 ApiType = SD.ApiType.GET,
                 Url = SD.eStoreAPIBase + "/api/Members/" + id,
-                AccessToken = ""
+                AccessToken = token
             });
         }
 
-        public async Task<T> UpdateMemberAsync<T>(MemberDto memberDto)
+        public async Task<T> UpdateMemberAsync<T>(MemberDto memberDto, string token)
         {
             return await this.SendAsync<T>(new ApiRequest()
             {
                 ApiType = SD.ApiType.PUT,
                 Data = memberDto,
                 Url = SD.eStoreAPIBase + "/api/Members",
-                AccessToken = ""
+                AccessToken = token
             });
         }
     }

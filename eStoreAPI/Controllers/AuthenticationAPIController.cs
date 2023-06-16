@@ -26,34 +26,36 @@ namespace eStoreAPI.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost]
-        public async Task<object> Authenticate(string email, string password)
+        [HttpGet]
+        public async Task<object> Authenticate(AccountDto accountDto)
         {
             try
             {
-                MemberDto memberDto = await _memberRepository.GetMemberByEmailAndPassword(email, password);
+                MemberDto memberDto = await _memberRepository.GetMemberByEmailAndPassword(accountDto.Email, accountDto.Password);
                 if (memberDto != null)
                 {
                     var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345superSecretKey@345"));
                     var signinCredentials = new SigningCredentials(secretKey, SecurityAlgorithms.HmacSha256);
                     string role = "User";
-                    if (email == _configuration["Admin:Email"] && password == _configuration["Admin:Password"])
+                    if (accountDto.Email == _configuration["Admin:Email"] && accountDto.Password == _configuration["Admin:Password"])
                     {
                         role = "Admin";
                     }
                     var tokenOptions = new JwtSecurityToken(
-                        issuer: "https://localhost:7042",
+                        issuer: "https://localhost:7049",
                         audience: "https://localhost:7042",
                         claims: new Claim[]
                         {
-                            new Claim(ClaimTypes.Name, email),
+                            new Claim("MemberId", memberDto.MemberId.ToString()),
+                            new Claim(ClaimTypes.Name, accountDto.Email),
                             new Claim(ClaimTypes.Role, role)
                         },
                         expires: DateTime.Now.AddMinutes(60),
                         signingCredentials: signinCredentials
                     );
                     var tokenString = new JwtSecurityTokenHandler().WriteToken(tokenOptions);
-                    return tokenString;
+                    _response.IsSuccess = true;
+                    _response.Result = tokenString;
                 }
 
             }

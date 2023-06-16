@@ -1,0 +1,57 @@
+﻿@model BussinessObject.MemberDto
+
+<div class="container p-4 border">
+    <div class="row pb-2">
+        <div class="col">
+            <h1 class="text-primary">Your Profile</h1>
+        </div>
+    </div>
+    <form asp-action="UserEdit">
+        <br />
+        <div class="container border p-3">
+            <hr />
+            <div class="row">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="MemberId" class="form-control" readonly />
+                <div class="col-2">
+                    <label asp-for="Email" class="control-label pt-2" style="font-size:20px;"></label>
+                </div>
+                <div class="col-10 pb-3">
+                    <input type="email" asp-for="Email" class="form-control" readonly />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="col-2">
+                    <label asp-for="Company" class="control-label pt-2" style="font-size:20px;"></label>
+                </div>
+                <div class="col-10 pb-3">
+                    <input type="text" asp-for="Company" class="form-control" />
+                    <span asp-validation-for="Company" class="text-danger"></span>
+                </div>
+                <div class="col-2">
+                    <label asp-for="City" class="control-label pt-2" style="font-size:20px;"></label>
+                </div>
+                <div class="col-10 pb-3">
+                    <input type="text" asp-for="City" class="form-control" />
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+                <div class="col-2">
+                    <label asp-for="Country" class="control-label pt-2" style="font-size:20px;"></label>
+                </div>
+                <div class="col-10 pb-3">
+                    <input type="text" asp-for="Country" class="form-control" />
+                    <span asp-validation-for="Country" class="text-danger"></span>
+                </div>
+                <input type="hidden" asp-for="Password" class="form-control" />
+                <div class="col-5 offset-2">
+
+                    <a asp-controller="Home" asp-action="Index" class="btn-primary btn form-control ">Back to Home</a>
+                </div>
+                <div class="col-5">
+                    <input type="submit" value="Update" class="btn btn-success form-control" />
+                </div>
+            </div>
+            <div>
+            </div>
+        </div>
+    </form>
+</div>

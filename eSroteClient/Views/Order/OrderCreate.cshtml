@@ -1,0 +1,164 @@
+﻿@model BussinessObject.OrderDto
+
+@using BussinessObject
+
+<style>
+    .product-row {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+        .product-row input[type="text"] {
+            margin-right: 10px;
+        }
+
+        .product-row .remove-product {
+            margin-left: 10px;
+            cursor: pointer;
+        }
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    window.onload = function () {
+        initUnitPrice(0);
+    }
+
+    function initUnitPrice(index) {
+        var hiddenInput = document.querySelector('.Product' + index);
+        hiddenInput.setAttribute('value', 18);
+    }
+
+    // Remove product row
+    function removeProductRow(element) {
+        $(element).closest('.product-row').remove();
+        updateProductIndexes();
+    }
+
+    // Update product indexes
+    function updateProductIndexes() {
+        $('.product-row').each(function (index, row) {
+            $(row).find('select').attr('name', `ProductList[${index}].ProductId`);
+            $(row).find('.unitprice').attr('name', `ProductList[${index}].UnitPrice`);
+            $(row).find('.unitprice').attr('class', `Product${index} unitprice`);
+            $(row).find('.quantity').attr('name', `ProductList[${index}].Quantity`);
+        });
+    }
+
+    // Add new product row
+    function addProductRow(element) {
+        var productCount = $('.product-row').length;
+
+        var selectOptions = '';
+        @foreach (var product in (List<ProductOrderDto>)ViewData["listProduct"])
+        {
+            <text>
+            selectOptions += '<option value="@product.ProductId" data-unit-price="@product.UnitPrice">@product.ProductId - @product.UnitPrice $</option>';
+            </text>
+        }
+
+        var productRow = '<div class="product-row">' +
+            '<select class="form-control" name="ProductList[' + productCount + '].ProductId" onchange="addUnitPrice(event)">' +
+            selectOptions +
+            '</select>' +
+            '<input hidden="hidden" class="Product' + productCount + ' unitprice" value="" name="ProductList[' + productCount + '].UnitPrice" />' +
+            '<input type="number" class="form-control quantity" name="ProductList[' + productCount + '].Quantity" placeholder="Quantity" />' +
+            '<input type="number" min="0" max="100" class="form-control discount" name="ProductList[' + productCount + '].Discount" placeholder="Discount" />' +
+            '<span class="remove-product" onclick="removeProductRow(this)">Remove</span>' +
+            '</div>';
+
+        $(element).closest('.col-10').find('.product-list').append(productRow);
+        initUnitPrice(productCount);
+    }
+
+    //Get unit price
+    function addUnitPrice(event) {
+        var selectedIndex = event.target.selectedIndex;
+        var unitPrice = event.target.options[selectedIndex].getAttribute('data-unit-price');
+        var productRow = $(event.target).closest('.product-row');
+        var hiddenInput = document.querySelector('.Product' + productRow.index());
+        hiddenInput.setAttribute('value', unitPrice);
+    }
+
+</script>
+<form asp-action="OrderCreate">
+    <br />
+    <div class="container border p-3">
+        <h1 class="text-primary">Create Order</h1>
+
+        <hr />
+        <div class="row">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="col-2">
+                <label asp-for="MemberId" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <select class="form-control" asp-for="MemberId">
+                    @foreach (var member in (List<MemberDto>)ViewData["listMember"])
+                    {
+                        <option value="@member.MemberId">@member.Email</option>
+                    }
+                </select>
+                <span asp-validation-for="MemberId" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="OrderDate" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="OrderDate" class="form-control" type="date" />
+                <span asp-validation-for="OrderDate" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="RequiredDate" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="RequiredDate" class="form-control" type="date" />
+                <span asp-validation-for="RequiredDate" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="ShippedDate" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="ShippedDate" class="form-control" type="date" />
+                <span asp-validation-for="ShippedDate" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="Freight" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <input asp-for="Freight" class="form-control" type="number" />
+                <span asp-validation-for="Freight" class="text-danger"></span>
+            </div>
+            <div class="col-2">
+                <label asp-for="ProductList" class="control-label pt-2" style="font-size:20px;"></label>
+            </div>
+            <div class="col-10 pb-3">
+                <div class="product-list">
+                    <div class="product-row">
+                        <select class="form-control product" asp-for="ProductList[0].ProductId" onchange="addUnitPrice(event)">
+                            @foreach (var product in (List<ProductOrderDto>)ViewData["listProduct"])
+                            {
+                                <option value="@product.ProductId" data-unit-price="@product.UnitPrice">@product.ProductId - @product.UnitPrice $</option>
+                            }
+                        </select>
+                        <input hidden="hidden" class="Product0 unitprice" value="" asp-for="ProductList[0].UnitPrice" />
+                        <input type="number" class="form-control quantity" asp-for="ProductList[0].Quantity" placeholder="Quantity" />
+                        <input type="number" min="0" max="100" class="form-control quantity" asp-for="ProductList[0].Discount" placeholder="Discount" />
+                        <span class="remove-product" onclick="removeProductRow(this)">Remove</span>
+                    </div>
+                </div>
+                <span onclick="addProductRow(this)" style="cursor: pointer; color: blue;">Add Product</span>
+            </div>
+            <div class="col-5 offset-2">
+                <a asp-action="OrderIndex" class="btn-primary btn form-control ">Back to List</a>
+            </div>
+            <div class="col-5">
+                <input type="submit" value="Create" class="btn btn-success form-control" />
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,37 @@
+﻿@model BussinessObject.AccountDto
+
+<div class="container">
+    <form asp-action="LoginIndex">
+        <br />
+        <div class="container border p-3">
+            <h1 class="text-primary text-center">Login</h1>
+
+            <hr />
+            <div class="row">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="col-2">
+                    <label class="control-label pt-2" style="font-size:20px;">Email</label>
+                </div>
+                <div class="col-10 pb-3">
+                    <input type="email" asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="col-2">
+                    <label class="control-label pt-2" style="font-size:20px;">Password</label>
+                </div>
+                <div class="col-10 pb-3">
+                    <input type="password" asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="col-5 offset-2">
+
+                    <a asp-controller="Home" asp-action="Index" class="btn-primary btn form-control ">Back to List</a>
+                </div>
+                <div class="col-5">
+                    <input type="submit" value="Login" class="btn btn-success form-control" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
