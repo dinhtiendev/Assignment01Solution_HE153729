@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using BussinessObject;
 using eSroteClient.Services.IServices;
 using Microsoft.AspNetCore.Mvc;
@@ -20,8 +22,11 @@ namespace eSroteClient.Controllers
             var token = HttpContext.Session.GetString("token");
             if (token != null)
             {
+                var handler = new JwtSecurityTokenHandler();
+                var jwtSecurityToken = handler.ReadJwtToken(token);
+                string memberId = jwtSecurityToken.Claims.FirstOrDefault(c => c.Type == "MemberId")?.Value;
                 MemberDto model = new();
-                var response = await _memberService.GetMemberByIdAsync<ResponseDto>(2, token);
+                var response = await _memberService.GetMemberByIdAsync<ResponseDto>(Int32.Parse(memberId), token);
                 if (response != null && response.IsSuccess)
                 {
                     model = JsonConvert.DeserializeObject<MemberDto>(Convert.ToString(response.Result));
@@ -29,7 +34,6 @@ namespace eSroteClient.Controllers
                 return View(model);
             }
             return NotFound();
-
         }
 
         public async Task<IActionResult> UserEdit(MemberDto model)
@@ -48,7 +52,6 @@ namespace eSroteClient.Controllers
                 }
             }
             return View(model);
-
         }
     }
 }

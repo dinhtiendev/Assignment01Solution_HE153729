@@ -1,4 +1,16 @@
 ﻿@inject IHttpContextAccessor httpContextAccessor
+@using System.IdentityModel.Tokens.Jwt;
+@{
+    var token = httpContextAccessor.HttpContext.Session.GetString("token");
+    string role = "";
+    if (token != null)
+    {
+        var handler = new JwtSecurityTokenHandler();
+        var jwtSecurityToken = handler.ReadJwtToken(token);
+        role = jwtSecurityToken.Claims.FirstOrDefault(c => c.Type == "Role")?.Value;
+    }
+
+}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,7 +36,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
-                        @if (httpContextAccessor.HttpContext.Session.GetString("token") == null)
+                        @if (token == null)
                         {
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="LoginIndex">Login</a>
@@ -32,15 +44,18 @@
                         }
                         else
                         {
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Member" asp-action="MemberIndex">Member</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="ProductIndex">Product</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="OrderIndex">Order</a>
-                            </li>
+                            @if (role == "Admin")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Member" asp-action="MemberIndex">Member</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Product" asp-action="ProductIndex">Product</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Order" asp-action="OrderIndex">Order</a>
+                                </li>
+                            }
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="User" asp-action="Profile">Profile</a>
                             </li>
@@ -48,9 +63,6 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="LogoutIndex">Logout</a>
                             </li>
                         }
-
-
-
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>

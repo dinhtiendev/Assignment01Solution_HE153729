@@ -47,7 +47,8 @@ namespace eStoreAPI.Controllers
                         claims: new Claim[]
                         {
                             new Claim("MemberId", memberDto.MemberId.ToString()),
-                            new Claim(ClaimTypes.Name, accountDto.Email),
+                            new Claim("Email", accountDto.Email),
+                            new Claim("Role", role),
                             new Claim(ClaimTypes.Role, role)
                         },
                         expires: DateTime.Now.AddMinutes(60),
